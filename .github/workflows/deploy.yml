@@ -16,7 +16,7 @@ jobs:
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.8.0
       with:
-        private-key: ${{ secrets.azert }}
+        ssh-private-key: ${{ secrets.azert }}
 
     - name: Deploy to VM
       run: |

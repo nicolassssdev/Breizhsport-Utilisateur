@@ -20,7 +20,7 @@ jobs:
 
     - name: Connect to VPN
       run: |
-        echo "${{ secrets.VPN_PASSWORD }}" | sudo openconnect -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr
+        echo "${{ secrets.VPN_PASSWORD }}" | sudo openconnect --no-cert-check -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr
 
 
     - name: Set up SSH keys

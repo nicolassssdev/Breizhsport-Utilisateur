@@ -18,10 +18,15 @@ jobs:
         sudo apt update
         sudo apt install -y openconnect 
 
+    - name: Get Server Certificate Fingerprint
+      run: |
+        SERVER_CERT_FINGERPRINT=$(openssl s_client -connect strasbourg-vpn.numerilab-cesi.fr:443 | openssl x509 -noout -fingerprint | awk -F= '{print $2}' | tr -d ':')
+        echo "Server Certificate Fingerprint: $SERVER_CERT_FINGERPRINT"
+        echo "::set-output name=SERVER_CERT_FINGERPRINT::$SERVER_CERT_FINGERPRINT"
+        
     - name: Connect to VPN
       run: |
-        echo "${{ secrets.VPN_PASSWORD }}" | sudo openconnect --no-cert-check -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr
-
+        echo "${{ secrets.VPN_PASSWORD }}" | sudo openconnect --servercert=<YOUR_SERVER_CERT_FINGERPRINT> -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr
 
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.8.0

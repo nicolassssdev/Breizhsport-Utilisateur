@@ -22,17 +22,17 @@ jobs:
       run: 
         echo f@rPvtg4 | sudo openconnect -u nlanotte --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr &
         
-    - name: Get Server Certificate Fingerprint
-      run: |
-        SSH_PRIVATE_KEY=AAAAB3NzaC1yc2EAAAADAQABAAABAQCt3UIirYCOrHEiNPLWjNhgDRk/+iM1XNAEW92Uqx46I9DJ4wI9MT/xvVfYpgSrW0IYa/lEv38RIwz8IJGUSzMj3/gdaAlMQblyCaq07RRfzz2iA8Fa8NreUbW6v6MYMW4vZuURjW9tkrUJWXFXBnlBZ8gYYyfWRKKk8sL9wDzPZjAXogiR97KcEerZwU4SG/0GUIx5dQFNo95i5Obp6n5XkKP/7L8e9krhnOf232dLzj2V8LaftRigDEW6awQDMTjnI7XGRkxsKSevav00dLIoE2qlPR4HtRxXuCHOcGPjQ44Wc4o8NlCFVviU8GL/DtVF89aPmw/Zz4ndljELss5f Test Cle ssh
-        echo "$SSH_PRIVATE_KEY"
-        echo sdfgHJKL | ssh root@ST2CN201-LX-2.numerilab-cesi.fr
+    # - name: Get Server Certificate Fingerprint
+    #   run: |
+    #     SSH_PRIVATE_KEY=AAAAB3NzaC1yc2EAAAADAQABAAABAQCt3UIirYCOrHEiNPLWjNhgDRk/+iM1XNAEW92Uqx46I9DJ4wI9MT/xvVfYpgSrW0IYa/lEv38RIwz8IJGUSzMj3/gdaAlMQblyCaq07RRfzz2iA8Fa8NreUbW6v6MYMW4vZuURjW9tkrUJWXFXBnlBZ8gYYyfWRKKk8sL9wDzPZjAXogiR97KcEerZwU4SG/0GUIx5dQFNo95i5Obp6n5XkKP/7L8e9krhnOf232dLzj2V8LaftRigDEW6awQDMTjnI7XGRkxsKSevav00dLIoE2qlPR4HtRxXuCHOcGPjQ44Wc4o8NlCFVviU8GL/DtVF89aPmw/Zz4ndljELss5f Test Cle ssh
+    #     echo "$SSH_PRIVATE_KEY"
+    #     echo sdfgHJKL | ssh root@ST2CN201-LX-2.numerilab-cesi.fr
 
 
-    - name: Set up SSH keys
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCt3UIirYCOrHEiNPLWjNhgDRk/+iM1XNAEW92Uqx46I9DJ4wI9MT/xvVfYpgSrW0IYa/lEv38RIwz8IJGUSzMj3/gdaAlMQblyCaq07RRfzz2iA8Fa8NreUbW6v6MYMW4vZuURjW9tkrUJWXFXBnlBZ8gYYyfWRKKk8sL9wDzPZjAXogiR97KcEerZwU4SG/0GUIx5dQFNo95i5Obp6n5XkKP/7L8e9krhnOf232dLzj2V8LaftRigDEW6awQDMTjnI7XGRkxsKSevav00dLIoE2qlPR4HtRxXuCHOcGPjQ44Wc4o8NlCFVviU8GL/DtVF89aPmw/Zz4ndljELss5f Test Cle ssh
+    # - name: Set up SSH keys
+    #   uses: webfactory/ssh-agent@v0.8.0
+    #   with:
+    #     ssh-private-key: AAAAB3NzaC1yc2EAAAADAQABAAABAQCt3UIirYCOrHEiNPLWjNhgDRk/+iM1XNAEW92Uqx46I9DJ4wI9MT/xvVfYpgSrW0IYa/lEv38RIwz8IJGUSzMj3/gdaAlMQblyCaq07RRfzz2iA8Fa8NreUbW6v6MYMW4vZuURjW9tkrUJWXFXBnlBZ8gYYyfWRKKk8sL9wDzPZjAXogiR97KcEerZwU4SG/0GUIx5dQFNo95i5Obp6n5XkKP/7L8e9krhnOf232dLzj2V8LaftRigDEW6awQDMTjnI7XGRkxsKSevav00dLIoE2qlPR4HtRxXuCHOcGPjQ44Wc4o8NlCFVviU8GL/DtVF89aPmw/Zz4ndljELss5f Test Cle ssh
 
     - name: Deploy to VM
       run: |

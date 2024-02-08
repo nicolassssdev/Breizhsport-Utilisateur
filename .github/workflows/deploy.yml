@@ -32,7 +32,7 @@ jobs:
     # - name: Set up SSH keys
     #   uses: webfactory/ssh-agent@v0.8.0
     #   with:
-    #       ssh-private-key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfdGvTdaCG76gv3EcNXXrZ9N/aNZCGB6+Ms5Smo5Tyl2JrNfE0ltSv2b7SwGkXcAmVDfCAUe3yUrxGbaAvZK+Im/zqhzkQy8nEAkfLkjIcJiBah3eq7WGBkoB/Ew4E7c/3vGcnQqXoz/GDEc2wKe8hf3kBYzX+CnYFoB1zazXDmGo9KfxKw82MtWHx6KHvyazAIt3zDW7e/aToqG014QVNWKUUFrDGIZGOaA6u+1HM4gC48lpuT/liYlP8zKULvTiDci6Jnz9Hzuw+VaFG8Jgqsphf3HWI0iP1uzry23QIwZBRHET671HVrVzr0U5ANzBrOwd/sBLtFJaKK39aZu5V root@ST2CN201-LX-2
+    #       ssh-private-key:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfdGvTdaCG76gv3EcNXXrZ9N/aNZCGB6+Ms5Smo5Tyl2JrNfE0ltSv2b7SwGkXcAmVDfCAUe3yUrxGbaAvZK+Im/zqhzkQy8nEAkfLkjIcJiBah3eq7WGBkoB/Ew4E7c/3vGcnQqXoz/GDEc2wKe8hf3kBYzX+CnYFoB1zazXDmGo9KfxKw82MtWHx6KHvyazAIt3zDW7e/aToqG014QVNWKUUFrDGIZGOaA6u+1HM4gC48lpuT/liYlP8zKULvTiDci6Jnz9Hzuw+VaFG8Jgqsphf3HWI0iP1uzry23QIwZBRHET671HVrVzr0U5ANzBrOwd/sBLtFJaKK39aZu5V root@ST2CN201-LX-2
 
     # - name: Deploy to VM
     #   run: |

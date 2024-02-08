@@ -29,12 +29,26 @@ jobs:
     #     echo sdfgHJKL | ssh root@ST2CN201-LX-2.numerilab-cesi.fr
 
 
-    - name: Set up SSH keys
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfdGvTdaCG76gv3EcNXXrZ9N/aNZCGB6+Ms5Smo5Tyl2JrNfE0ltSv2b7SwGkXcAmVDfCAUe3yUrxGbaAvZK+Im/zqhzkQy8nEAkfLkjIcJiBah3eq7WGBkoB/Ew4E7c/3vGcnQqXoz/GDEc2wKe8hf3kBYzX+CnYFoB1zazXDmGo9KfxKw82MtWHx6KHvyazAIt3zDW7e/aToqG014QVNWKUUFrDGIZGOaA6u+1HM4gC48lpuT/liYlP8zKULvTiDci6Jnz9Hzuw+VaFG8Jgqsphf3HWI0iP1uzry23QIwZBRHET671HVrVzr0U5ANzBrOwd/sBLtFJaKK39aZu5V root@ST2CN201-LX-2
+    # - name: Set up SSH keys
+    #   uses: webfactory/ssh-agent@v0.8.0
+    #   with:
+    #       ssh-private-key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfdGvTdaCG76gv3EcNXXrZ9N/aNZCGB6+Ms5Smo5Tyl2JrNfE0ltSv2b7SwGkXcAmVDfCAUe3yUrxGbaAvZK+Im/zqhzkQy8nEAkfLkjIcJiBah3eq7WGBkoB/Ew4E7c/3vGcnQqXoz/GDEc2wKe8hf3kBYzX+CnYFoB1zazXDmGo9KfxKw82MtWHx6KHvyazAIt3zDW7e/aToqG014QVNWKUUFrDGIZGOaA6u+1HM4gC48lpuT/liYlP8zKULvTiDci6Jnz9Hzuw+VaFG8Jgqsphf3HWI0iP1uzry23QIwZBRHET671HVrVzr0U5ANzBrOwd/sBLtFJaKK39aZu5V root@ST2CN201-LX-2
 
-    - name: Deploy to VM
-      run: |
-        # Connect to VM and deploy using Docker Compose
-        ssh root@ST2CN201-LX-2.numerilab-cesi.fr "cd ./ && docker-compose up -d"
+    # - name: Deploy to VM
+    #   run: |
+    #     # Connect to VM and deploy using Docker Compose
+    #     ssh root@ST2CN201-LX-2.numerilab-cesi.fr "cd ./ && docker-compose up -d"
+
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: root@ST2CN201-LX-2.numerilab-cesi.fr
+        username: root
+        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfdGvTdaCG76gv3EcNXXrZ9N/aNZCGB6+Ms5Smo5Tyl2JrNfE0ltSv2b7SwGkXcAmVDfCAUe3yUrxGbaAvZK+Im/zqhzkQy8nEAkfLkjIcJiBah3eq7WGBkoB/Ew4E7c/3vGcnQqXoz/GDEc2wKe8hf3kBYzX+CnYFoB1zazXDmGo9KfxKw82MtWHx6KHvyazAIt3zDW7e/aToqG014QVNWKUUFrDGIZGOaA6u+1HM4gC48lpuT/liYlP8zKULvTiDci6Jnz9Hzuw+VaFG8Jgqsphf3HWI0iP1uzry23QIwZBRHET671HVrVzr0U5ANzBrOwd/sBLtFJaKK39aZu5V root@ST2CN201-LX-2
+        port: 3000
+        script: |
+          cd /var/www/app/
+          git pull origin main
+          git status
+          npm install 
+          

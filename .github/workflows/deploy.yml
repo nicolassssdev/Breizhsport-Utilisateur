@@ -44,7 +44,7 @@ jobs:
       with:
         host: root@ST2CN201-LX-2.numerilab-cesi.fr
         username: root
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 3000
         script: |
           cd /var/www/app/

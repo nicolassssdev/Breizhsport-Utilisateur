@@ -44,7 +44,7 @@ jobs:
       with:
         host: root@ST2CN201-LX-2.numerilab-cesi.fr
         username: root
-        key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDDIUODpmFTeFUn5y/9nEOiAxX2QN3A3iAkfmk6RPIR6TczilPHPbq9pNkxtaAtSEJ+KDqcPvBtztCWOLWwe20iaJEcvlnvldRR859p7dOo/D7ex0REOC0cLnLvDmVPZb3ergmXjvYFrVQY7CuI/oq7a1At+i4mFWDLzvIuw1ga5Zo/rAnf3hK6Yfw5dqqJHJ83yHSgRGNhWhI1V7TOwYt7izwxlrAGo2gUSMB7NR30NoPOcLBz9tMSQ1SNoD8QsO1rN9aVdKqu4Jg1XyQ0vREJxbcwyzkcDZm3jG/11MBYZsLDC2vEhyx2Kug5bF04/VywvBMF3pHe+DzUSvWIsgi8HIWGADMIMbtHaHg+UZ5Vgizwd7nXg6YFkflGUp050fEukazxaNg9y3YYlXmApjyzGlV0r0VnhXYFqBXdGZkxGkMightLPfRAnjokNwYoZT902505Y934P8gbtKdc7FNjtXcrmW36isya0VSIrAi0P/Dc0Qm39QuW+TuNo/tIs1s= nicolas@pop-os
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 3000
         script: |
           cd /var/www/app/

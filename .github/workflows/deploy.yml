@@ -42,7 +42,7 @@ jobs:
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
-        host: root@ST2CN201-LX-2.numerilab-cesi.fr
+        host: 172.16.47.100
         username: root
         password: sdfgHJKL
         # privateKey: ${{ secrets.SSH_PRIVATE_KEY }}

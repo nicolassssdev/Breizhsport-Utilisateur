@@ -19,8 +19,8 @@ jobs:
         sudo apt install -y openconnect 
     
     - name: Connect to VPN
-      run: sudo openconnect -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr --no-cert-check --debug <<<"${{ secrets.VPN_PASSWORD }}"
-
+      run: 
+      echo ${{ secrets.VPN_PASSWORD}} | sudo openconnect -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr 
     - name: Get Server Certificate Fingerprint
       run: |
         SSH_PRIVATE_KEY="${{ secrets.SSH_KEY }}"
@@ -33,7 +33,7 @@ jobs:
     - name: Set up SSH keys
       uses: webfactory/ssh-agent@v0.8.0
       with:
-        ssh-private-key: ${{ secrets.azert }}
+        ssh-private-key: ${{ secrets.SSH_KEY }}
 
     - name: Deploy to VM
       run: |

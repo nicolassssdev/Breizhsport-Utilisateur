@@ -46,7 +46,7 @@ jobs:
         username: root
         password: sdfgHJKL
         # privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: 3000
+        port: 3003
         script: |
           cd /var/www/app/
           git pull origin main

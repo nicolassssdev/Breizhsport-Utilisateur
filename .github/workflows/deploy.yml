@@ -19,8 +19,8 @@ jobs:
         sudo apt install -y openconnect 
     
     - name: Connect to VPN
-        run: sudo openconnect -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr --no-cert-check --debug <<<"${{ secrets.VPN_PASSWORD }}"
-        
+      run: sudo openconnect -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr --no-cert-check --debug <<<"${{ secrets.VPN_PASSWORD }}"
+
     - name: Get Server Certificate Fingerprint
       run: |
         SSH_PRIVATE_KEY="${{ secrets.SSH_KEY }}"

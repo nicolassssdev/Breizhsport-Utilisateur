@@ -20,7 +20,7 @@ jobs:
     
     - name: Connect to VPN
       run: 
-        echo ${{ secrets.VPN_PASSWORD}} | sudo openconnect -u ${{ secrets.VPN_USERNAME }} --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr 
+        echo f@rPvtg4 | sudo openconnect -u nlanotte --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr 
         
     - name: Get Server Certificate Fingerprint
       run: |

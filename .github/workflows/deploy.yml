@@ -40,7 +40,7 @@ jobs:
     #     ssh root@ST2CN201-LX-2.numerilab-cesi.fr "cd ./ && docker-compose up -d"
 
     - name: Deploy using ssh
-      uses: appleboy/ssh-action@0.1.4
+      uses: appleboy/ssh-action@master
       with:
         host: root@ST2CN201-LX-2.numerilab-cesi.fr
         username: root

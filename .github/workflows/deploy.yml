@@ -20,7 +20,10 @@ jobs:
 
     - name: Get Server Certificate Fingerprint
       run: |
-        SERVER_CERT_FINGERPRINT=$(ssh -i path/to/your/private/key user@remote-server 'openssl s_client -connect strasbourg-vpn.numerilab-cesi.fr:443 2>/dev/null | openssl x509 -noout -fingerprint | awk -F= '\''{print $2}'\'' | tr -d \':\'')
+        SSH_PRIVATE_KEY="${{ secrets.SSH_KEY }}"
+        echo "$SSH_PRIVATE_KEY"
+        echo "${{ secrets.SSH_KEY }}"
+        SERVER_CERT_FINGERPRINT=$(echo "$SSH_PRIVATE_KEY" | ssh -i - root@172.16.47.100 "openssl s_client -connect strasbourg-vpn.numerilab-cesi.fr:443 2>/dev/null | openssl x509 -noout -fingerprint | awk -F= '{print \$2}' | tr -d ':'")
         echo "Server Certificate Fingerprint: $SERVER_CERT_FINGERPRINT"
         echo "::set-output name=SERVER_CERT_FINGERPRINT::$SERVER_CERT_FINGERPRINT"
 

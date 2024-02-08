@@ -48,7 +48,7 @@ jobs:
         # privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
-          cd /var/www/app/
+          cd /var/www/app/Breizhsport-Utilisateur/
           git pull origin main
           git status
           npm install 

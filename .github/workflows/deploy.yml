@@ -36,7 +36,7 @@ jobs:
 
     # - name: Deploy to VM
     #   run: |
-    #     # Connect to VM and deploy using Docker Compose
+    #    # Connect to VM and deploy using Docker Compose
     #     ssh root@ST2CN201-LX-2.numerilab-cesi.fr "cd ./ && docker-compose up -d"
 
     - name: Deploy using ssh

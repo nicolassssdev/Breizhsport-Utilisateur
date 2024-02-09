@@ -10,9 +10,3 @@ services:
       - "3003:3003"
     volumes:
       - .:/app
-    networks:
-      - breizhsport-produit_breizhsport-network
-
-networks:
-  breizhsport-produit_breizhsport-network:
-    external: true

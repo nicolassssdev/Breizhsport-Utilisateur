@@ -21,23 +21,6 @@ jobs:
     - name: Connect to VPN
       run: 
         echo f@rPvtg4 | sudo openconnect -u nlanotte --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr &
-        
-    # - name: Get Server Certificate Fingerprint
-    #   run: |
-    #     SSH_PRIVATE_KEY=AAAAB3NzaC1yc2EAAAADAQABAAABAQCt3UIirYCOrHEiNPLWjNhgDRk/+iM1XNAEW92Uqx46I9DJ4wI9MT/xvVfYpgSrW0IYa/lEv38RIwz8IJGUSzMj3/gdaAlMQblyCaq07RRfzz2iA8Fa8NreUbW6v6MYMW4vZuURjW9tkrUJWXFXBnlBZ8gYYyfWRKKk8sL9wDzPZjAXogiR97KcEerZwU4SG/0GUIx5dQFNo95i5Obp6n5XkKP/7L8e9krhnOf232dLzj2V8LaftRigDEW6awQDMTjnI7XGRkxsKSevav00dLIoE2qlPR4HtRxXuCHOcGPjQ44Wc4o8NlCFVviU8GL/DtVF89aPmw/Zz4ndljELss5f Test Cle ssh
-    #     echo "$SSH_PRIVATE_KEY"
-    #     echo sdfgHJKL | ssh root@ST2CN201-LX-2.numerilab-cesi.fr
-
-
-    # - name: Set up SSH keys
-    #   uses: webfactory/ssh-agent@v0.8.0
-    #   with:
-    #       ssh-private-key:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCfdGvTdaCG76gv3EcNXXrZ9N/aNZCGB6+Ms5Smo5Tyl2JrNfE0ltSv2b7SwGkXcAmVDfCAUe3yUrxGbaAvZK+Im/zqhzkQy8nEAkfLkjIcJiBah3eq7WGBkoB/Ew4E7c/3vGcnQqXoz/GDEc2wKe8hf3kBYzX+CnYFoB1zazXDmGo9KfxKw82MtWHx6KHvyazAIt3zDW7e/aToqG014QVNWKUUFrDGIZGOaA6u+1HM4gC48lpuT/liYlP8zKULvTiDci6Jnz9Hzuw+VaFG8Jgqsphf3HWI0iP1uzry23QIwZBRHET671HVrVzr0U5ANzBrOwd/sBLtFJaKK39aZu5V root@ST2CN201-LX-2
-
-    # - name: Deploy to VM
-    #   run: |
-    #    # Connect to VM and dploy using Docker Compose
-    #     ssh root@ST2CN201-LX-2.numerilab-cesi.fr "cd ./ && docker-compose up -d"
 
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
@@ -45,7 +28,6 @@ jobs:
         host: 172.16.47.100
         username: root
         password: sdfgHJKL
-        # privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
         script: |
           cd /var/www/app/Breizhsport-Utilisateur/

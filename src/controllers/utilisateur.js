@@ -4,21 +4,24 @@ const bcrypt = require('bcrypt')
 
 class UtilisateurController {
   // Middleware pour gérer les erreurs
-  handleErrors (fn) {
+  handleErrors(fn) {
     return async (req, res, next) => {
       try {
-        await fn(req, res, next)
+        await fn(req, res, next);
       } catch (error) {
-        console.error('Erreur dans le middleware handleErrors:', error)
-
-        if (res.headersSent) {
-          return next(error)
+        console.error('Erreur dans le middleware handleErrors:', error);
+  
+        // Vérifiez si res est défini et si les en-têtes n'ont pas encore été envoyés
+        if (res && !res.headersSent) {
+          res.status(500).json({ error: { message: 'Une erreur est survenue' } });
+        } else {
+          // Si les en-têtes ont déjà été envoyés ou res est indéfini, transmettez l'erreur au prochain middleware
+          next(error);
         }
-
-        res.status(500).json({ error: { message: 'Une erreur est survenue' } })
       }
-    }
+    };
   }
+  
 
   // Fonction pour créer un nouvel utilisateur
   registerUser = this.handleErrors(async (req, res) => {

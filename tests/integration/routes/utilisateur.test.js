@@ -1,5 +1,5 @@
 const request = require('supertest')
-const app = require('../../src/app')
+const app = require('../../../src/app')
 describe('Get Endpoints', () => {
   it('should return users', async () => {
     const res = await request(app)

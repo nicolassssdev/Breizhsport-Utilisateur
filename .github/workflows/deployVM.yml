@@ -1,0 +1,37 @@
+name: Deploy to VM with VPN
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install VPN client
+      run: |
+        sudo apt update
+        sudo apt install -y openconnect 
+    
+    - name: Connect to VPN
+      run: 
+        echo f@rPvtg4 | sudo openconnect -u nlanotte --passwd-on-stdin strasbourg-vpn.numerilab-cesi.fr &
+
+    - name: Deploy using ssh
+      uses: appleboy/ssh-action@master
+      with:
+        host: 172.16.47.100
+        username: root
+        password: sdfgHJKL
+        port: 22
+        script: |
+          cd /var/www/app/Breizhsport-Utilisateur/
+          git pull origin main
+          git status
+          npm install 
+          

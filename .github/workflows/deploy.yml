@@ -13,6 +13,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       
+      - name: Update package.json version
+        run: |
+          tag=${{ steps.git_tag.outputs.tag }}
+          package_json=$(cat package.json)
+          updated_json=$(echo "${package_json}" | jq ".version = \"${{ github.ref_name }}\"")
+          echo "${updated_json}" > package.json
+
       - name: Build Docker Image
         run: docker build -t electrix67/breizhsport-utilisateur-api:${{ github.ref_name }} .
 

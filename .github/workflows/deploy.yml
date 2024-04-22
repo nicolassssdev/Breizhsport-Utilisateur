@@ -23,8 +23,8 @@ jobs:
       - name: Build Docker Image
         run: docker build --no-cache -t breizhsport-utilisateur-web .
 
-      - name: Build tag Image
-        run: docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:${{ github.ref_name }} .
+      - name: Tag Image
+        run: docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:${{ github.ref_name }}
 
       - name: Login to Docker Registry
         run: echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" --password-stdin

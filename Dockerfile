@@ -10,6 +10,9 @@ COPY package*.json ./
 # Installez toutes les dépendances (y compris les dépendances de développement)
 RUN npm install
 
+# Installez nodemon globalement
+RUN npm install -g nodemon
+
 # Copiez le reste des fichiers dans le répertoire de travail
 COPY . .
 

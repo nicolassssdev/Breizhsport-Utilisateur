@@ -38,6 +38,9 @@
     "testEnvironment": "node",
     "coveragePathIgnorePatterns": [
       "/node_modules/"
+    ],
+    "modulePaths": [
+      "<rootDir>"
     ]
   }
 }

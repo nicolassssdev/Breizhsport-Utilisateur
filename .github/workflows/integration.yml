@@ -25,6 +25,9 @@ jobs:
       - name: Install Snyk CLI
         run: npm install -g snyk
 
+      - name: Install Jest CLI
+        run: npm install -g jest
+
       - name: Snyk Auth
         run: snyk auth ${{ secrets.SNYK_TOKEN }} 
 

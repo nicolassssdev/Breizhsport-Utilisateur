@@ -27,7 +27,7 @@ app.use('/user', userRoutes);
 app.get('/', (req, res) => {
     res.send(`Bienvenue sur mon API Breizhsport Utilisateur Ugur !`);
 });
-
+//rzfdfk,
 // Middleware pour gérer les erreurs 404
 app.use((req, res, next) => {
   const error = new Error('Not found');

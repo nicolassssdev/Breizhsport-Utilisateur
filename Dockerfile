@@ -1,5 +1,5 @@
 # Utilisez une image Node.js légère
-FROM node:21
+FROM node:21.7-alpine3.19
 
 # Définissez le répertoire de travail dans le conteneur
 WORKDIR /app

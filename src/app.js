@@ -35,6 +35,7 @@ app.use((req, res, next) => {
   next(error);
 });
 
+// bendo
 // Middleware pour gérer les erreurs générales
 app.use((error, req, res, next) => {
   res.status(error.status || 500);

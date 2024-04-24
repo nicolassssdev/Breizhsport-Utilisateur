@@ -10,10 +10,11 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
+      - name: Update
+        run: apt update
+      
       - name: Install VPN client
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y openconnect 
+        run: apt install -y openconnect 
 
       - name: Install Node.js
         uses: actions/setup-node@v4

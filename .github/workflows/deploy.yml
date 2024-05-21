@@ -12,28 +12,32 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
+      - name: Extract Git tag
+        id: git_tag
+        run: echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
+
       - name: Update package.json version
         run: |
           tag=${{ steps.git_tag.outputs.tag }}
           package_json=$(cat package.json)
-          updated_json=$(echo "${package_json}" | jq ".version = \"${{ github.ref_name }}\"")
+          updated_json=$(echo "${package_json}" | jq ".version = \"${tag}\"")
           echo "${updated_json}" > package.json
 
       - name: Build Docker Image
         run: docker build --no-cache -t breizhsport-utilisateur-web .
 
       - name: Tag Image
-        run: docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:${{ github.ref_name }}
-
-      - name: Tag Image
-        run: docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:latest
+        run: |
+          tag=${{ steps.git_tag.outputs.tag }}
+          docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:${tag}
+          docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:latest
 
       - name: Login to Docker Registry
         run: echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" --password-stdin
 
       - name: Push Docker Image
-        run: docker push electrix67/breizhsport-utilisateur-api:${{ github.ref_name }}
-      
-      - name: Push Docker Image Latest
-        run: docker push electrix67/breizhsport-utilisateur-api:latest
+        run: |
+          tag=${{ steps.git_tag.outputs.tag }}
+          docker push electrix67/breizhsport-utilisateur-api:${tag}
+          docker push electrix67/breizhsport-utilisateur-api:latest

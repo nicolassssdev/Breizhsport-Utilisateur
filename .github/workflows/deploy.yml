@@ -26,8 +26,14 @@ jobs:
       - name: Tag Image
         run: docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:${{ github.ref_name }}
 
+        - name: Tag Image
+        run: docker tag breizhsport-utilisateur-web electrix67/breizhsport-utilisateur-api:latest
+
       - name: Login to Docker Registry
         run: echo "${{ secrets.DOCKER_REGISTRY_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_REGISTRY_USERNAME }}" --password-stdin
 
       - name: Push Docker Image
         run: docker push electrix67/breizhsport-utilisateur-api:${{ github.ref_name }}
+      
+      - name: Push Docker Image Latest
+        run: docker push electrix67/breizhsport-utilisateur-api:latest

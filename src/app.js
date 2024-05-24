@@ -22,7 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use('/use', userRoutes);
+app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
     res.send(`Bienvenue sur mon API Breizhsport Utilisateur Ugur !`);
